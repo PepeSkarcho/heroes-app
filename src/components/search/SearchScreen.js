@@ -19,16 +19,13 @@ export const SearchScreen = ({ history }) => {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        if(searchText.trim().length <= 1){
-            alert('El campo esta vacio');
-            return;
-        }
+        
         history.push(`?q=${searchText}`)
 
         reset();
     }
     return (
-        <div>
+        <div className = "animate__animated animate__fadeIn">
             <h4>Search Screen</h4>
             <hr/>
 
@@ -46,14 +43,16 @@ export const SearchScreen = ({ history }) => {
                                 value = {searchText}
                                 onChange={handleInputChange}
                             />
-
+                            
+                            <div className = "d-grid gap-2">
                             <button
                                 type = "submit"
-                                className = "btn m-1 btn-block btn-outline-primary"
+                                className = "btn btn-outline-primary mt-3"
                                 
                             >
                                 Search
                             </button>
+                            </div>
                         </form>
                 </div>
 
@@ -64,7 +63,7 @@ export const SearchScreen = ({ history }) => {
                     {
                         (q === '')
                         &&
-                        <div className = "alert alert-info">
+                        <div className = "alert alert-info animate__animated animate__backInUp">
                             Search a Hero
                         </div>
                     }
@@ -73,7 +72,7 @@ export const SearchScreen = ({ history }) => {
                         (q !== '' && heroesFiltered.length === 0)
                         &&
                         <div className = "alert alert-danger animate__animated animate__shakeX">
-                            Ups!!! There is not a valid name of Hero
+                            Ups!!! There is a not valid name of Hero
                         </div>
                     }
 
